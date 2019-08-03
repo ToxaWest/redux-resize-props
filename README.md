@@ -18,7 +18,7 @@
 #####Init method in component constructor
     constructor(props) {
         super(props);
-        new Resize(props.ResizeAction)
+        Resize(props.ResizeAction)
     }
 #####Add dispatcher
     const mapDispatchToProps = dispatch => ({
@@ -54,10 +54,10 @@ after this your can get mode using `this.props.windowSize`
                             width: 1024
                         }]
 
-        new Resize(props.ResizeAction, config)
+        Resize(props.ResizeAction, config)
     }                 
                     
 ###! Important. 
 1 ) `desktop` is default value using after all breakpoints
 2 ) Props changes only if breakpoints change.
-3 ) Do not init `new Resize(props.ResizeAction)` in all components. Only in main.
+3 ) Do not init `Resize(props.ResizeAction)` in all components. Only in main.

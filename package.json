@@ -1,0 +1,28 @@
+{
+  "name": "redux-resize-props",
+  "version": "1.0.0",
+  "description": "Redux props resize, change redux store on resize.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "props",
+    "resize",
+    "event",
+    "redux",
+    "redux-resize",
+    "props",
+    "resize",
+    "event"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ToxaWest/redux-resize-props.git"
+  },
+  "author": "ToxaWest",
+  "license": "ISC",
+  "devDependencies": {
+    "prop-types": "^15.7.2"
+  }
+}

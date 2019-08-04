@@ -1,5 +1,15 @@
 import PropTypes from "prop-types";
 
+const config = [{
+    width: PropTypes.number,
+    mode: PropTypes.string
+}];
+
+/**
+ * @param [config] - config width options {width: breakpoint, mode: breakpoint name}
+ * @returns string - current size mode.
+ */
+
 const getCurrent = (config) => {
     const width = window.innerWidth;
     let mode = 'desktop';
@@ -11,6 +21,9 @@ const getCurrent = (config) => {
     });
     return mode;
 };
+
+getCurrent.PropTypes = {config};
+
 const defaultConfig = [{
     mode: 'mobile',
     width: 575
@@ -19,25 +32,41 @@ const defaultConfig = [{
     width: 1024
 }];
 
-const Resize = (ResizeAction, config) => {
+/**
+ *
+ * @param windowSize
+ * @returns {{windowSize: string, type: string}}
+ * @constructor
+ */
+const ResizeAction = (windowSize) => ({
+    type: 'resize',
+    windowSize
+});
+
+/**
+ * Send dispatch event on breakpoint change.
+ *
+ * @param dispatch
+ * @param config
+ * @constructor
+ */
+
+const Resize = (dispatch, config) => {
     const media = config ? config : defaultConfig;
     let name = getCurrent(media);
-    ResizeAction(name);
+    dispatch(ResizeAction(name));
     window.addEventListener('resize', ev => {
         const currentWidth = getCurrent(media);
         if (currentWidth !== name) {
             name = currentWidth;
-            ResizeAction(currentWidth)
+            dispatch(ResizeAction(currentWidth))
         }
     })
 };
 
 Resize.propTypes = {
-    ResizeAction: PropTypes.func.isRequired,
-    config: [{
-        width: PropTypes.number,
-        mode: PropTypes.string
-    }]
+    dispatch: PropTypes.func.isRequired,
+    config
 };
 
 const ResizeReducer = (state = {windowSize: ''}, action) => {
@@ -53,13 +82,4 @@ const ResizeReducer = (state = {windowSize: ''}, action) => {
     }
 };
 
-const ResizeAction = (windowSize) => ({
-    type: 'resize',
-    windowSize
-});
-
-const ResizeDispatcher = (dispatch, size) => {
-    dispatch(ResizeAction(size))
-};
-
-export {ResizeReducer, Resize, ResizeDispatcher}
+export {ResizeReducer, Resize}

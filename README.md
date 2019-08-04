@@ -55,4 +55,4 @@ after this your can get mode using `this.props.windowSize` inside your class.
 ### ! Important. 
 ##### 1 ) `desktop` is default value using after all breakpoints
 ##### 2 ) Props changes only if breakpoint change.
-##### 3 ) Do not init `Resize(props.ResizeAction)` in all components. Only in main.
+##### 3 ) Do not init `Resize(props.dispatch)` in all components. Only in main.

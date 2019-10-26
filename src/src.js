@@ -1,4 +1,16 @@
 /**
+ * Default breakpoints
+ * @type {*[]}
+ */
+const defaultConfig = [{
+    mode: 'mobile',
+    width: 575
+}, {
+    mode: 'tablet',
+    width: 1024
+}];
+
+/**
  * @param [config] - config width options {width: breakpoint, mode: breakpoint name}
  * @returns string - current size mode.
  */
@@ -14,14 +26,6 @@ const getCurrent = (config) => {
     });
     return mode;
 };
-
-const defaultConfig = [{
-    mode: 'mobile',
-    width: 575
-}, {
-    mode: 'tablet',
-    width: 1024
-}];
 
 /**
  *
@@ -42,12 +46,11 @@ const ResizeAction = (windowSize) => ({
  * @constructor
  */
 
-const Resize = (dispatch, config) => {
-    const media = config ? config : defaultConfig;
-    let name = getCurrent(media);
+const Resize = (dispatch, config = defaultConfig) => {
+    let name = getCurrent(config);
     dispatch(ResizeAction(name));
     window.addEventListener('resize', ev => {
-        const currentWidth = getCurrent(media);
+        const currentWidth = getCurrent(config);
         if (currentWidth !== name) {
             name = currentWidth;
             dispatch(ResizeAction(currentWidth))
@@ -59,7 +62,10 @@ const ResizeReducer = (state = {windowSize: ''}, action) => {
     const {type, windowSize} = action;
     switch (type) {
         case 'resize':
-            return Object.assign({}, state, {windowSize});
+            return {
+                ...state,
+                ...windowSize
+            };
         default:
             return state
     }

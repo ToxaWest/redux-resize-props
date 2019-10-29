@@ -1,6 +1,6 @@
 {
   "name": "redux-resize-props",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Redux props resize, change redux store on resize.",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,6 @@
   "author": "ToxaWest",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "latest",
     "babel-preset-es2015": "latest",
     "babel-preset-minify": "latest"
   }

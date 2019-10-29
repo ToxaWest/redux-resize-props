@@ -1,6 +1,6 @@
 {
   "name": "redux-resize-props",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Redux props resize, change redux store on resize.",
   "main": "index.js",
   "scripts": {

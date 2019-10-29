@@ -62,10 +62,7 @@ const ResizeReducer = (state = {windowSize: ''}, action) => {
     const {type, windowSize} = action;
     switch (type) {
         case 'resize':
-            return {
-                ...state,
-                ...windowSize
-            };
+            return Object.assign({}, state, {windowSize});
         default:
             return state
     }

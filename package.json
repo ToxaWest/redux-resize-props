@@ -27,7 +27,6 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "latest",
-    "babel-plugin-transform-object-rest-spread": "latest",
     "babel-preset-es2015": "latest",
     "babel-preset-minify": "latest"
   }
